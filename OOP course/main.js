@@ -79,11 +79,16 @@ console.log(book2)
 
 //Magazine Constructor
 
- function Magazine(title, author, year, month) {
+ function Magazine(title, author, year, month) {            
     Book.call(this, title, author, year, month);
 
     this.month = month;
+
  }
+ 
+ /* +++: 1. Inherit Properties: In your Magazine constructor function, you're calling the Book constructor function using Book.call(this, ...) to inherit properties from the Book constructor. 
+ This is known as constructor chaining. */
+
 
 /*  const mag1 = new Magazine("Mag One", "John Smith", "2018", "Jan")
 
@@ -96,19 +101,34 @@ console.log(book2)
 
  Magazine.prototype = Object.create(Book.prototype);
 
+/* +++: 2. Inherit Prototype (with Methods): You're setting the prototype of the Magazine constructor to a new object created with Object.create(Book.prototype). This establishes a prototype chain where Magazine.prototype inherits from Book.prototype. This step ensures that instances of Magazine inherit the methods defined in Book.prototype. */
+
 
  const mag1 = new Magazine("Mag One", "John Smith", "2018", "Jan")
 
 
- console.log(mag1.getSummary())
- console.log(mag1)
+ console.log(mag1.getSummary());
+ console.log(mag1, "HERE");
 
 
  // Use magazine Constructor:
 
  Magazine.prototype.constructor = Magazine;
 
- console.log(mag1)
+ /* +++: 3. Set Magazine Constructor: To maintain the correct constructor reference, you set Magazine.prototype.constructor to Magazine. This step is important because, after step 2, the constructor reference on Magazine.prototype would be pointing to Book. By resetting it to Magazine, you ensure that instances of Magazine correctly report their constructor as Magazine. 
+ ALSO: In practice, it's a good practice to set the constructor reference correctly to align with the intended type of the object. However, the absence of step 3 won't prevent your code from working; it just might make it less intuitive and harder to debug in some cases.*/
+
+ Magazine.prototype.someMethod = function(){
+    return "word"
+ }
+
+ console.log(mag1, "Tukaj")
+/* 
+ for(let keys in mag1) {
+    console.log(keys, " FOR IN LOOP MAG1");
+ }  //for in loop gre tudi čez propertija prototype chaina
+
+ console.log(Object.entries(mag1)); */
  
 
 
@@ -149,7 +169,7 @@ console.log(book2)
   book4.author = "Ivan Cankar";
   book4.year = "1899";
 
-  console.log(book4)
+  console.log(book4, "BOOK 4")
 
   //same thing with different syntax:
 
@@ -159,7 +179,7 @@ console.log(book2)
     year: {value: "1902"}
   });
 
-  console.log(book5)
+  console.log(book5, "BOOK 5")
 
 
 
@@ -237,8 +257,18 @@ console.log(book2)
 
  const mag2 = new MagazineSubClass("Mag Two", "Marcel Štefančič", "2020", "Jun");
 
- console.log(mag2)
+ console.log(mag2, " tukaj 2")
  console.log(mag2.getSummary()) //works
 
 
+/*  for(let key in mag2) {
+    console.log(key, " KEY IN MAG2") //for in loop ne gre čez propertije prototype chaina
+ }
+
+ console.log(Object.keys(mag2)); */
+
+
  // Note: Using sublasses is easier than using INheritance with ES5. But its important to understand whats going on underneath.
+
+
+ 
