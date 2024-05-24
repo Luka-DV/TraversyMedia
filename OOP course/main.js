@@ -7,7 +7,7 @@ const book1 = {
     author: "John Doe",
     year: 2013,
     getSummary() {
-        console.log(`${this.title} was written by ${this.author} in ${this.year}`)
+        //console.log(`${this.title} was written by ${this.author} in ${this.year}`)
         return `The book ${this.title} was written by ${this.author} in ${this.year}.`
     },
     getAuthor() {
@@ -44,7 +44,7 @@ function Book (title, author, year) {
 // Instatiate an Object
 
 const book2 = new Book("Book Two", "John Doe", "2013");
-const book3 = new Book("Book Three", "Jane Doe", "2016");
+const book3 = new Book("Book Three", "Jane Dow", "2016");
 
 //getSummary method on prototype:
 
@@ -68,7 +68,7 @@ Book.prototype.revise = function(newYear) {
 
 
 console.log(book2)
-book2.revise("2020");
+ book2.revise("2020");
 console.log(book2)
 
 
@@ -90,9 +90,9 @@ console.log(book2)
  This is known as constructor chaining. */
 
 
-/*  const mag1 = new Magazine("Mag One", "John Smith", "2018", "Jan")
+const mag1a = new Magazine("Mag One", "John Smith", "2018", "Jan")
 
- console.log(mag1.getSummary()); // >> error.  */
+ // console.log("1A", mag1a.getSummary()); // >> error.  
 
 
  // In order to inherit the prototype methods of "Book":
@@ -232,14 +232,21 @@ console.log(book2)
 
 
  class BookClass2 {
-    constructor(title, author, year) {
+    constructor(title, author, year, color) {
         this.title = title;
         this.author = author;
         this.year = year;
+        this.color = color;
     }
+
+    static value = "Over 9000!";
 
     getSummary() {
         return `The book ${this.title} was written by ${this.author} in ${this.year}.`
+    }
+
+    static sayHello() {
+        console.log("Hello!")
     }
  }
 
@@ -247,25 +254,25 @@ console.log(book2)
  // Magazine Subclass:
 
  class MagazineSubClass extends BookClass2 {
-    constructor(title, author, year, month) {
-        super(title, author, year);
+    constructor(color, title, author, year, month) {
+        super(title, author, year, color);
         this.month = month;
     }
  }
 
  // Instatiate Magazine:
 
- const mag2 = new MagazineSubClass("Mag Two", "Marcel Štefančič", "2020", "Jun");
+ const mag2 = new MagazineSubClass("Red", "Mag Two", "Marcel Štefančič", "2020", "Jun");
 
  console.log(mag2, " tukaj 2")
  console.log(mag2.getSummary()) //works
 
 
-/*  for(let key in mag2) {
+ for(let key in mag2) {
     console.log(key, " KEY IN MAG2") //for in loop ne gre čez propertije prototype chaina
  }
 
- console.log(Object.keys(mag2)); */
+ console.log(Object.keys(mag2));
 
 
  // Note: Using sublasses is easier than using INheritance with ES5. But its important to understand whats going on underneath.
