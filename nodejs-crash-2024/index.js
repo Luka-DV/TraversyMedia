@@ -13,6 +13,8 @@ console.log(`Posts length is ${getPostsLength()}`);
 
 // console.log("Hello World");
 
+// CommonJS
+
 // const { celciusToFahrenheit, generateRandomNumber, constanta } = require("./utils");
 
 // console.log(`Random number: ${generateRandomNumber()}`);
