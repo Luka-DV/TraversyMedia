@@ -4,11 +4,12 @@ import url from "url";
 import path from "path";
 const PORT = process.env.PORT; //PORT var is stored in .env file
 
+
 // Get current path:
 // __filename > gives current file name with the path
 // __dirname > will give you the path of the file (folder)
 // so dostopne same po sebi samo v commonJS
-// you can make yout own using the url and path modules (included in node)
+// you can make yout own using the url and path modules (included in node):
 
 const __filename = url.fileURLToPath(import.meta.url) //takes the file url and turns it into a path
 const __dirname = path.dirname(__filename); //gives the path do the file (you are in)
@@ -77,6 +78,7 @@ const server = http.createServer( async (request, response) => {
     //>ends the stream, is handled by default in frameworks like express
 
     // response.end(JSON.stringify({message: "Server ErroR"})) //response is sending some json
+    //important properties:
     // console.log(request.url);
     // console.log(request.method);
     // console.log(request) //shitload of stuff
