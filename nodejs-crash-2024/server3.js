@@ -8,7 +8,8 @@ import {
     jsonMiddleware, 
     getUsersHandler, 
     getUserByIdHandler, 
-    routeNotFoundHandler
+    routeNotFoundHandler,
+    createUserHandler
 } from "./middleware.js";
 
 
@@ -19,6 +20,8 @@ const server = createServer( (req, res) => {
                 getUsersHandler(req, res);
             } else if(req.url.match(/\/api\/users\/([0-9]+)/) && req.method === "GET") {
                 getUserByIdHandler(req, res);
+            } else if(req.url === "/api/users" && req.method === "POST") {
+                createUserHandler(req, res);
             } else {
                 routeNotFoundHandler(req, res);
             } 
