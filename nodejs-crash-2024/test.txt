@@ -1,0 +1,20 @@
+Hello, I am writting to this file
+This is appended text
+GET: /api/users
+GET: /api/users/2
+POST: /api/users
+Data posted: {
+    "id": 4,
+    "name": "Nikola Tesla"
+}
+GET: /api/users
+GET: /api/users
+GET: /api/users/1
+GET: /api/u
+GET: /api/users/4
+POST: /api/users
+Data posted: {
+    "id": 4,
+    "name": "Nikola Tesla"
+}
+GET: /api/users/4

@@ -15,6 +15,7 @@ const __filename = url.fileURLToPath(import.meta.url) //takes the file url and t
 const __dirname = path.dirname(__filename); //gives the path do the file (you are in)
 
 console.log(`Filename: ${__filename}`);
+console.log(import.meta.url)
 console.log(`Directory: ${__dirname}`);
 
 const server = http.createServer( async (request, response) => {

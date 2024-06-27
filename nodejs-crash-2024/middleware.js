@@ -1,4 +1,5 @@
 import { users } from "./data.js";
+import { appendFileLog } from "./fsDemo.js";
 
 
 // Logger middleware
@@ -6,6 +7,12 @@ import { users } from "./data.js";
 
 const logger = (req, res, next) => {
     console.log(`${req.method}: ${req.url}`);
+    appendFileLog(`${req.method}: ${req.url}`); //added later
+    if(req.method === "POST") {
+        req.on("data", chunk => { 
+            appendFileLog(`Data posted: ${chunk.toString()}`);
+        });
+    }
     next();
 };
 
@@ -53,7 +60,8 @@ const routeNotFoundHandler = (req, res) => {
 const createUserHandler = (req, res) => {
     let body = "";
     //Listen for data
-    req.on("data", chunk => {
+    req.on("data", chunk => { 
+        console.log("CHUNK: ", chunk.toString())
         body += chunk.toString();
     });
     req.on("end", () => {
