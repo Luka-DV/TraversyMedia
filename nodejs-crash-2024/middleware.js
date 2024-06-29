@@ -1,4 +1,4 @@
-import { users } from "./data.js";
+import users from "./data.js";  //default import
 import { appendFileLog } from "./fsDemo.js";
 
 
@@ -7,13 +7,14 @@ import { appendFileLog } from "./fsDemo.js";
 
 const logger = (req, res, next) => {
     console.log(`${req.method}: ${req.url}`);
-    appendFileLog(`${req.method}: ${req.url}`); //added later
+    //added later - logs the request method and url + new user to test.txt
+    appendFileLog(`${req.method}: ${req.url}`); 
     if(req.method === "POST") {
         req.on("data", chunk => { 
             appendFileLog(`Data posted: ${chunk.toString()}`);
         });
     }
-    next();
+    next();  //calls the next middleware
 };
 
 // JSON Middleware
@@ -61,7 +62,7 @@ const createUserHandler = (req, res) => {
     let body = "";
     //Listen for data
     req.on("data", chunk => { 
-        console.log("CHUNK: ", chunk.toString())
+        // console.log("CHUNK: ", chunk.toString())
         body += chunk.toString();
     });
     req.on("end", () => {

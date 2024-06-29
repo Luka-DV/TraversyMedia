@@ -18,3 +18,16 @@ Data posted: {
     "name": "Nikola Tesla"
 }
 GET: /api/users/4
+GET: /api/users
+GET: /api/users/2
+POST: /api/users
+Data posted: {
+    "id": 4,
+    "name": "Nikola Tesla"
+}
+POST: /api/users
+Data posted: {
+    "id": 5,
+    "name": "Stane Juznic"
+}
+GET: /api/users

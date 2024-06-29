@@ -5,5 +5,5 @@ const users = [
     {id: 3, name: "Jim Doe"}
 ];
 
-export {users};
+export default users; //default export
 

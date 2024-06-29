@@ -1,4 +1,6 @@
 
+//File System module
+
 // import fs from "fs";
 import fs from "fs/promises";
 
@@ -26,6 +28,7 @@ import fs from "fs/promises";
 //     .then( data => console.log(data))
 //     .catch( error => console.error(error));
 
+// same as:
 
 //readFile() - async/await
 
@@ -67,9 +70,11 @@ const main = async () => {
     await readFile();
 };
 
+//async functions dont guarantee execution in sequence- race conditions may occur: wrapping the functions in another async func will make them execute in the proper order
+
 //main();
 
-// extra ssignment
+// extra assignment
 // an appendFile function for adding functionlity to the logger middleware
 const appendFileLog = async (loggedText) => {
     try {

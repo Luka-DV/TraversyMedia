@@ -28,7 +28,7 @@ console.log(__filename);
 console.log(__dirname);
 
 //join() creates a file path based on the arguments passed in
-// reason: different os-es us different delimiters /, \ etc.
+// reason: different os-es us different delimiters - /, \ etc.
 const filePath2 = path.join(__dirname, "dir1", "dir2", "test.txt");
 console.log(filePath2);
 
