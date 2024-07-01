@@ -31,3 +31,10 @@ Data posted: {
     "name": "Stane Juznic"
 }
 GET: /api/users
+GET: /api/users
+POST: /api/users
+Data posted: {
+    "id": 5,
+    "name": "Stane Juznic"
+}
+GET: /api/users
